@@ -1,3 +1,4 @@
+import { BadRequestException } from '@nestjs/common';
 import { AggregateRoot } from '@nestjs/cqrs';
 
 export class Hero extends AggregateRoot {
@@ -5,7 +6,7 @@ export class Hero extends AggregateRoot {
     private readonly _id: string,
     private readonly name: string,
     private readonly age: number,
-    private readonly powers: string[],
+    private powers: string[],
   ) {
     super();
   }
@@ -24,5 +25,15 @@ export class Hero extends AggregateRoot {
 
   getPowers(): string[] {
     return [...this.powers];
+  }
+
+  updatePowers(powers: string[]): void {
+    const powersLower = powers.map((power) => power.toLocaleLowerCase());
+
+    if (powersLower.includes('blink eyes')) {
+      throw new BadRequestException('blink eyes is not a power.');
+    }
+
+    this.powers = powers;
   }
 }

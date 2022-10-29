@@ -1,10 +1,10 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 
-import { HeroFactory } from '../model/hero.factory';
+import { HeroFactory } from '../../model/hero.factory';
 import { CreateHeroCommandBus } from './create-hero.command-bus';
 
 @CommandHandler(CreateHeroCommandBus)
-export class CreateHeroCommandBusHandler
+export class CreateHeroCommandHandler
   implements ICommandHandler<CreateHeroCommandBus>
 {
   constructor(

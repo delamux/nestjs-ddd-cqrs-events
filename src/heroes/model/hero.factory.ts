@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb';
 
 import { EntityFactory } from 'src/domain/infrastructure/database/mongodb/entity.factory';
 import { HeroEntityRepository } from '../db/hero-entity.repository';
-import { HeroCreatedEvent } from '../events/hero-created.event';
+import { HeroCreatedEvent } from '../events/hero-created/hero-created.event';
 import { Hero } from '../model/Hero';
 
 @Injectable()
