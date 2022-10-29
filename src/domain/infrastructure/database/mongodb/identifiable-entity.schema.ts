@@ -1,7 +1,7 @@
 import { Prop } from '@nestjs/mongoose';
-import { ObjectID } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 export abstract class IdentifiableEntitySchema {
   @Prop()
-  readonly _id: ObjectID;
+  readonly _id: ObjectId;
 }

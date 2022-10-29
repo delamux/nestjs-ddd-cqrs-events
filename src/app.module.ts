@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CampersController } from './campers/campers.controller';
+import { MongodbModule } from './domain/infrastructure/database/mongodb/mongodb.module';
+import { HeroModule } from './heroes/hero.module';
 
 @Module({
-  imports: [],
-  controllers: [CampersController],
+  imports: [HeroModule, MongodbModule],
+  controllers: [],
   providers: [],
 })
 export class AppModule {}

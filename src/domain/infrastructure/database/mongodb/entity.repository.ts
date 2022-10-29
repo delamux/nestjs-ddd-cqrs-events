@@ -1,18 +1,13 @@
 import { NotFoundException } from '@nestjs/common';
 import { AggregateRoot } from '@nestjs/cqrs';
-import {
-  FilterQuery,
-  LeanDocument,
-  Model,
-  _AllowStringsForIds,
-} from 'mongoose';
+import { FilterQuery, LeanDocument, Model } from 'mongoose';
 
 import { EntitySchemaFactory } from './entity-schema.factory';
 import { IdentifiableEntitySchema } from './identifiable-entity.schema';
 
 export abstract class EntityRepository<
   TSchema extends IdentifiableEntitySchema,
-  TEntity extends AggregateRoot
+  TEntity extends AggregateRoot,
 > {
   constructor(
     protected readonly entityModel: Model<TSchema>,
@@ -43,7 +38,7 @@ export abstract class EntityRepository<
   ): Promise<TEntity[]> {
     return (
       await this.entityModel.find(entityFilterQuery, {}, { lean: true })
-    ).map(entityDocument =>
+    ).map((entityDocument) =>
       this.entitySchemaFactory.createFromSchema(entityDocument),
     );
   }
@@ -58,9 +53,9 @@ export abstract class EntityRepository<
   ): Promise<void> {
     const updatedEntityDocument = await this.entityModel.findOneAndReplace(
       entityFilterQuery,
-      (this.entitySchemaFactory.create(
+      this.entitySchemaFactory.create(
         entity,
-      ) as unknown) as _AllowStringsForIds<LeanDocument<TSchema>>,
+      ) as unknown as LeanDocument<TSchema>,
       {
         new: true,
         useFindAndModify: false,
