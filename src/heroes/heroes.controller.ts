@@ -7,6 +7,7 @@ import { HeroesDto } from './dto/heroes.dto';
 import { CreateHeroRequest } from './dto/request/create-hero-request.dto';
 import { UpdateHeroPowersRequest } from './dto/request/update-hero-powers-request.dto';
 import { HeroesQueryBus } from './queries/find-all/heroes.query-bus';
+import { HeroQueryBus } from './queries/get-hero/hero.query-bus';
 
 @Controller('heroes')
 export class HeroesController {
@@ -16,7 +17,11 @@ export class HeroesController {
   ) {}
 
   @Get(':id')
-  async getHero(@Param('id') heroId: string): Promise<void> {}
+  async getHero(@Param('id') heroId: string): Promise<HeroesDto> {
+    return this.queryBus.execute<HeroQueryBus, HeroesDto>(
+      new HeroQueryBus(heroId),
+    );
+  }
 
   @Get()
   async getHeroes(): Promise<HeroesDto[]> {
