@@ -4,7 +4,7 @@ import { ObjectId } from 'mongodb';
 import { EntityFactory } from 'src/domain/infrastructure/database/mongodb/entity.factory';
 import { HeroEntityRepository } from '../db/hero-entity.repository';
 import { HeroCreatedEvent } from '../events/hero-created/hero-created.event';
-import { Hero } from '../model/Hero';
+import { Hero } from '../model/hero.model';
 
 @Injectable()
 export class HeroFactory implements EntityFactory<Hero> {

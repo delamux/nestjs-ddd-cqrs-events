@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ObjectId } from 'mongodb';
 
 import { EntitySchemaFactory } from '../../domain/infrastructure/database/mongodb/entity-schema.factory';
-import { Hero } from '../model/Hero';
+import { Hero } from '../model/hero.model';
 import { HeroSchema } from './hero.schema';
 
 @Injectable()
