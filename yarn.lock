@@ -4285,6 +4285,11 @@
   optionalDependencies:
     "graceful-fs" "^4.1.6"
 
+"kafkajs@^2.2.2":
+  "integrity" "sha512-9wpGLAwRVbVtSew3xwi2f2BMuYLXWhYcoYB/O7gd1JYOYuYTAEC60CeFgRQugI016MxqvOKnOOA+l1jx+4b84g=="
+  "resolved" "https://registry.npmjs.org/kafkajs/-/kafkajs-2.2.2.tgz"
+  "version" "2.2.2"
+
 "kareem@2.4.1":
   "integrity" "sha512-aJ9opVoXroQUPfovYP5kaj2lM7Jn02Gw13bL0lg9v0V7SaUc0qavPs0Eue7d2DcC3NjqI6QAUElXNsuZSeM+EA=="
   "resolved" "https://registry.npmjs.org/kareem/-/kareem-2.4.1.tgz"
