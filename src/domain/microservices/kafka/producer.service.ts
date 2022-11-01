@@ -12,7 +12,7 @@ export class ProducerService implements OnModuleInit, OnApplicationShutdown {
   constructor(private configService: ConfigService) {}
 
   private readonly kafka = new Kafka({
-    brokers: ['localhost:9092'],
+    brokers: [this.configService.get(ConfigEnv.KAFKA_URI)],
   });
 
   private readonly producer: Producer = this.kafka.producer();
