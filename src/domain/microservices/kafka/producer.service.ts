@@ -3,13 +3,18 @@ import {
   OnApplicationShutdown,
   OnModuleInit,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Kafka, Producer, ProducerRecord } from 'kafkajs';
+import { ConfigEnv } from 'src/config/environment';
 
 @Injectable()
 export class ProducerService implements OnModuleInit, OnApplicationShutdown {
+  constructor(private configService: ConfigService) {}
+
   private readonly kafka = new Kafka({
     brokers: ['localhost:9092'],
   });
+
   private readonly producer: Producer = this.kafka.producer();
 
   async onModuleInit() {

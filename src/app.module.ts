@@ -5,7 +5,11 @@ import { MongodbModule } from './domain/infrastructure/database/mongodb/mongodb.
 import { HeroModule } from './heroes/hero.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), HeroModule, MongodbModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    HeroModule,
+    MongodbModule,
+  ],
   controllers: [],
   providers: [],
 })

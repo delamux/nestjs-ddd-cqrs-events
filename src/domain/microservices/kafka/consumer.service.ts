@@ -1,16 +1,21 @@
 import { Injectable, OnApplicationShutdown } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import {
   Kafka,
   Consumer,
   ConsumerSubscribeTopics,
   ConsumerRunConfig,
 } from 'kafkajs';
+import { ConfigEnv } from 'src/config/environment';
 
 @Injectable()
 export class ConsumerService implements OnApplicationShutdown {
+  constructor(private configService: ConfigService) {}
+
   private readonly kafka = new Kafka({
-    brokers: [],
+    brokers: ['localhost:9092'],
   });
+
   private readonly consumers: Consumer[] = [];
 
   async consume(topic: ConsumerSubscribeTopics, config: ConsumerRunConfig) {
